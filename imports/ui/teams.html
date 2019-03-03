@@ -1,0 +1,21 @@
+<template name="teams">
+    <form class="new-team">
+        <input type="text" name="name" placeholder="Type to add new team" />
+        <input type="submit" value="Add new team"/>
+    </form>
+    <ul>
+        {{#each teams}}
+            {{> team}}
+        {{/each}}     
+    </ul>     
+</template>
+
+<template name="team">
+    <li class="{{#if checked}}checked{{/if}}">
+        <button class="delete">&times;</button>
+    
+        <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+    
+        <span class="text">{{name}}</span>
+    </li>
+</template>
