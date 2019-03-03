@@ -1,0 +1,22 @@
+<body>
+    <div class="container">
+        <header>
+        <h1>Team List</h1>
+        </header>
+
+        {{> teams}}
+    </div>
+</body>
+
+<template name="teams">
+    <form class="new-team">
+            <input type="text" name="name" placeholder="Type to add new team" />
+            <input type="submit" value="Add new Team"/>
+    </form>
+    <ul>
+        {{#each teams}}
+            <!-- <li>{{name}}</li> -->
+            {{> team}}
+        {{/each}}
+    </ul>
+</template>
