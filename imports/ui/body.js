@@ -7,3 +7,4 @@ import './login.js';
 import './register.js';
 import './navbar.js';
 import './person.js'
+import './editPerson.js'

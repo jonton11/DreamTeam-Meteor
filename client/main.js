@@ -9,6 +9,7 @@ Router.route('/teams');
 Router.route('/register');
 Router.route('/login')
 Router.route('/person');
+Router.route('/editPerson')
 Router.route('/', {
   name: 'home',
   template: 'home'
