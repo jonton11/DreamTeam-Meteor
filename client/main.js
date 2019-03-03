@@ -6,5 +6,11 @@ import '../imports/api/teams.js';
 import '../imports/ui/body.js';
 
 Router.route('/teams');
-Router.route('/test');
+Router.route('/register');
+Router.route('/login')
+Router.route('/person');
+Router.route('/', {
+  name: 'home',
+  template: 'home'
+})
 

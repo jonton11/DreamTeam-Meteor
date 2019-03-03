@@ -1,13 +1,15 @@
 <template name="teams">
-    <form class="new-team">
-        <input type="text" name="name" placeholder="Type to add new team" />
-        <input type="submit" value="Add new team"/>
-    </form>
-    <ul>
-        {{#each teams}}
-            {{> team}}
-        {{/each}}     
-    </ul>     
+    {{#if currentUser}}
+        <form class="new-team">
+            <input type="text" name="name" placeholder="Type to add new team" />
+            <input type="submit" value="Add new team"/>
+        </form>
+        <ul>
+            {{#each teams}}
+                {{> team}}
+            {{/each}}     
+        </ul> 
+    {{/if}}    
 </template>
 
 <template name="team">

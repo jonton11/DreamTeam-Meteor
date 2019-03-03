@@ -3,9 +3,14 @@
         <!-- <header>
         <h1>Team List</h1>
         </header> -->
-
-        <!-- {{> teams}} -->
+        {{#if currentUser}}
+            {{> navbar}}
+        {{/if}}
     </div>
 </body>
 
-
+<template name="home">
+    <h1>Welcome to DreamTeam!</h1>
+        <a href="/login">login</a>
+        <a href="/register">Register</a>
+</template>
