@@ -1,6 +1,6 @@
 <template name="teams">
     {{#if currentUser}}
-        <form class="new-team">
+        <form class="newTeam">
             <input type="text" name="name" placeholder="Type to add new team" />
             <input type="submit" value="Add new team"/>
         </form>
@@ -22,11 +22,11 @@
     
         <span class="text">{{name}}</span>
         {{#if isTeamMembers}}
-            <form>
-                <input type="text" name="searchNewMember" placeholder="Search new member">
+            <form class="searchUser">
+                <input type="text" name="searchUser" placeholder="Search new member">
                 <input type="submit" value="Search">
             </form>
-            <p>Member list</p>
+            <p>Team Members</p>
             {{#each members}}
                 <p>{{userName}}</p>
             {{/each}}

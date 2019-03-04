@@ -28,7 +28,7 @@ Template.team.helpers({
 })
 
 Template.teams.events({
-  'submit .new-team'(event) {
+  'submit .newTeam'(event) {
     // Prevent default browser form submit
     event.preventDefault();
  
@@ -36,7 +36,6 @@ Template.teams.events({
     const target = event.target;
     const name = target.name.value;
 
-    // console.log("tet", Teams.find({}, { sort: { createdAt: -1 } }, {limit: 1}))
  
     // Insert a team into the collection
     let newTeamID = Teams.insert({
@@ -84,15 +83,55 @@ Template.team.events({
         newTeams.splice(teams.indexOf(this._id), 1)
 
         const profile = user.profile
-        Meteor.users.update({_id: user._id}, {$set: { 
-          profile: {
-            ...profile,
-            teams: newTeams
-          }
-        }});
+        const data = {
+          userID: user._id,
+          profile,
+          newTeams
+        }
+
+        // calling deleteTeamFromUser function from server
+        Meteor.call('deleteTeamFromUser', data, function(error){
+          if (error) console.log("got an error " + error.reason);
+        });
       }
     })
     // delete team
     Teams.remove(this._id);
+  },
+  'submit .searchUser': function(event, template) {
+    event.preventDefault();
+    const searchUser = event.target.searchUser.value
+    const resultUser = Meteor.users.find({"profile.userName": searchUser}).fetch()
+    
+    if(resultUser.length>0){
+      const joinedTeams = resultUser[0].profile.teams
+
+      if(joinedTeams.includes(this._id)){
+        alert("This member is already in your team")
+      }else{
+        const cf = confirm(`Please confirm to add userName: "${searchUser}" to your team`)
+        if(cf){
+          // add new member to the team
+          Teams.update({ _id: this._id}, { $set: {
+            members: this.members.concat(resultUser[0]._id)
+          }})
+
+          // add new team to user account
+          const updateUser = Meteor.users.find({ _id: resultUser[0]._id}).fetch()[0]
+          const data = {
+            updateUser,
+            teamID: this._id
+          }
+
+          // calling addTeamToUser function from the server
+          Meteor.call('addTeamToUser', data, function(error){
+            if (error) console.log("got an error " + error.reason);
+          });
+
+        }
+      }
+    }else{
+      alert("No information for this userName")
+    }
   },
 });
