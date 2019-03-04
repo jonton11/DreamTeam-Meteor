@@ -12,11 +12,18 @@ Template.teams.helpers({
 });
 
 Template.team.helpers({
-  members(){
+  members() {
     return Meteor.users.find({"profile.teams": this._id})
   },
-  userName(){
+  userName() {
     return this.profile.userName
+  },
+  isTeamMembers() {
+    teams = Meteor.user().profile.teams
+    return teams.includes(this._id)
+  },
+  isTeamCreator () {
+    return Meteor.userId() === this.createdBy
   }
 })
 

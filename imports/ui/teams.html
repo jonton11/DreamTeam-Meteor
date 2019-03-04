@@ -14,14 +14,22 @@
 
 <template name="team">
     <li class="{{#if checked}}checked{{/if}}">
-        <button class="delete">&times;</button>
+        {{#if isTeamCreator}}
+            <button class="delete">&times;</button>
+        {{/if}}
     
         <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
     
         <span class="text">{{name}}</span>
-        <h1>Member list</h1>
-        {{#each members}}
-            {{userName}}
-        {{/each}}
+        {{#if isTeamMembers}}
+            <form>
+                <input type="text" name="searchNewMember" placeholder="Search new member">
+                <input type="submit" value="Search">
+            </form>
+            <p>Member list</p>
+            {{#each members}}
+                <p>{{userName}}</p>
+            {{/each}}
+        {{/if}}
     </li>
 </template>
