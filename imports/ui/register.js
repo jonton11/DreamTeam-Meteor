@@ -11,13 +11,16 @@ Template.register.events({
       const password = template.find('#password').value
       const firstName = template.find('#firstName').value
       const lastName = template.find('#lastName').value
+      const userName = template.find('#userName').value
       console.log(`form submitted email: ${firstName}, password: ${lastName} `)
       Accounts.createUser({
         email: email,
         password: password,
         profile: {
           firstName: firstName,
-          lastName: lastName
+          lastName: lastName,
+          userName: userName,
+          teams:[]
         }
       }, function(err){
         if(err){

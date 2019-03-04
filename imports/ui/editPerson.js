@@ -14,6 +14,10 @@ Template.editPerson.helpers({
     lastName() {
         const lastName = Meteor.user().profile.lastName
         return lastName
+    },
+    userName() {
+        const userName = Meteor.user().profile.userName
+        return userName
     }
   });
 
@@ -22,6 +26,7 @@ Template.editPerson.events({
         event.preventDefault();
         const newFirstName = event.target.editFirstName.value
         const newLastName = event.target.editLastName.value
+        const newUserName = event.target.editUserName.value
         const profile = Meteor.user().profile
         const newEmail = event.target.editEmail.value
 
@@ -30,7 +35,8 @@ Template.editPerson.events({
             profile: {
                 ...profile,
                 firstName: newFirstName,
-                lastName: newLastName
+                lastName: newLastName,
+                userName: newUserName
             }
         }});
 

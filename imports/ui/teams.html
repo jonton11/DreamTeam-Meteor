@@ -19,5 +19,9 @@
         <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
     
         <span class="text">{{name}}</span>
+        <h1>Member list</h1>
+        {{#each members}}
+            {{userName}}
+        {{/each}}
     </li>
 </template>
