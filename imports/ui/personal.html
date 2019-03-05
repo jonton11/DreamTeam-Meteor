@@ -1,0 +1,57 @@
+<template name="personal">
+    <!-- <p>Username: {{userName}}</p>
+        <p>First Name: {{firstName}}</p>
+        <p>Last Name: {{lastName}}</p>
+        <p>Email: {{email}}</p>
+        <a href="/editPerson">Edit Profile</a> -->
+        
+        <!-- Personal Profile -->
+        <div class="tab-pane fade in active" id="tab-profile-personal">
+            <div class="row items-push">
+                <div class="col-sm-6 col-sm-offset-3 form-horizontal">
+                <p><h2>Profile</h2></p>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label>Username:</label>
+                        <div class="form-control-static font-w700">{{userName}}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label>Email Address:</label>
+                        <div class="form-control-static font-w700">{{email}}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label >Firstname:</label>
+                        <div class="form-control-static font-w700">{{firstName}}</div>
+                    </div>
+                    <div class="col-xs-6">
+                        <label >Lastname:</label>
+                        <div class="form-control-static font-w700">{{lastName}}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="block-content block-content-full">
+                        <a class="btn btn-sm btn-primary" href="/editPerson">Edit Profile</a>
+                    </div>
+                </div>
+                <div>
+                    {{#if teams}}
+                        <p><h3>Team List</h3></p>
+                        <ul>
+                            {{#each teams}}
+                                <li>
+                                    <p>{{name}}</p>
+                                </li>
+                            {{/each}}     
+                        </ul> 
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Personal Profile -->
+
+</template>

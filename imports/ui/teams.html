@@ -1,35 +1,60 @@
 <template name="teams">
-    {{#if currentUser}}
-        <form class="newTeam">
-            <input type="text" name="name" placeholder="Type to add new team" />
-            <input type="submit" value="Add new team"/>
-        </form>
-        <ul>
-            {{#each teams}}
-                {{> team}}
-            {{/each}}     
-        </ul> 
-    {{/if}}    
+    <!-- Personal Profile -->
+    <div class="tab-pane fade in active" id="tab-profile-personal">
+            <div class="row items-push">
+                <div class="col-sm-6 col-sm-offset-3 form-horizontal">
+                    {{#if currentUser}}
+                        <form class="newTeam">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <h4 for="profile-email">Create New Team</h4>
+                                    <p><input required class="form-control input-lg" type="text" name="name" placeholder="Enter new team"></p>
+                                    <button class="btn btn-sm btn-primary" type="submit"> Add new team</button>
+                                </div>
+                            </div>
+                        </form>
+                        <ul>
+                            {{#each teams}}
+                                {{> team}}
+                            {{/each}}     
+                        </ul> 
+                    {{/if}}    
+                </div>
+            </div>
+        </div>
+        <!-- END Personal Profile -->
 </template>
 
 <template name="team">
-    <li class="{{#if checked}}checked{{/if}}">
-        {{#if isTeamCreator}}
-            <button class="delete">&times;</button>
-        {{/if}}
-    
-        <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-    
-        <span class="text">{{name}}</span>
+    <li >
+        <div>
+            <h4 class="text" >
+                Team: {{name}}
+                
+                <div style="float: right">
+                    <!-- delete team -->
+                    {{#if isTeamCreator}}
+                        <button class="btn btn-sm btn-danger delete"><i class="fa fa-trash fa-lg"></i></button>
+                    {{/if}}
+                </div>
+            </h4>
+        </div>
+        <br>
         {{#if isTeamMembers}}
             <form class="searchUser">
-                <input type="text" name="searchUser" placeholder="Search new member">
-                <input type="submit" value="Search">
+                <div class="input-group input-group-md">
+                    <input class="form-control" type="text" name="searchUser" placeholder="Search new member by username">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
             </form>
-            <p>Team Members</p>
+            <br>
+            <p><h5>Team Members</h5></p>
             {{#each members}}
-                <p>{{userName}}</p>
+                <p><i class="fa fa-user"></i> : {{userName}}</p>
             {{/each}}
+            <hr>
         {{/if}}
     </li>
 </template>

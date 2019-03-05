@@ -1,7 +1,29 @@
 <template name="navbar">
-        <ul>
-            <li><a href="{{pathFor route='person'}}">Profile</a></li>
-            <li><a href="{{pathFor route='teams'}}">Teams</a></li>
-            <li><a href="{{pathFor route='logout'}}" class="logout">logout</a></li>
-        </ul>
-    </template>
+    <div class="tab-pane fade in active" id="tab-profile-personal">
+        <div class="row items-push">
+            <div class="navbar navbar-light">
+                <ul class="nav nav-tabs justify-content-end text-white" style="float: right">
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{{pathFor route='personal'}}" >Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{pathFor route='teams'}}">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link logout" href="{{pathFor route='logout'}}">logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Hi {{userName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- <ul>
+        <li>Hi {{userName}}</li>
+        <li><a href="{{pathFor route='person'}}">Profile</a></li>
+        <li><a href="{{pathFor route='teams'}}">Teams</a></li>
+        <li><a href="{{pathFor route='logout'}}" class="logout">logout</a></li>
+    </ul> -->
+</template>

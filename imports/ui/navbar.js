@@ -2,6 +2,13 @@ import { Template } from 'meteor/templating';
  
 import './navbar.html';
 
+Template.navbar.helpers({
+    userName() {
+        const userName = Meteor.user().username
+        return userName
+    },
+})
+
 Template.navbar.events({
     'click .logout': function(event) {
       event.preventDefault()

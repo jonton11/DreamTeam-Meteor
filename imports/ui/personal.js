@@ -1,14 +1,14 @@
 import { Template } from 'meteor/templating';
 import { Teams } from '../api/teams.js';
-import './person.html';
+import './personal.html';
 
-Template.person.helpers({
+Template.personal.helpers({
     email() {
         const email = Meteor.user().emails[0]
         return email.address  
     },
     userName() {
-        const userName = Meteor.user().profile.userName
+        const userName = Meteor.user().username
         return userName
     },
     firstName() {

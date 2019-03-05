@@ -8,7 +8,7 @@ import '../imports/ui/body.js';
 Router.route('/teams');
 Router.route('/register');
 Router.route('/login')
-Router.route('/person');
+Router.route('/personal');
 Router.route('/editPerson')
 Router.route('/', {
   name: 'home',

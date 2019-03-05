@@ -14,6 +14,10 @@ Meteor.methods({
     const currentEmail = Meteor.user().emails[0].address
     Accounts.removeEmail(Meteor.userId(), currentEmail)
   },
+  setUserName: function(newUsername){
+    // change username
+    Accounts.setUsername(Meteor.userId(), newUsername)
+  },
   addTeamToUser: function(data)
   { 
     // add new team to user account

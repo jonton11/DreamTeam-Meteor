@@ -1,9 +1,47 @@
 <template name="editPerson">
-    <form>
+    <!-- <form>
         <input required type="text" name="editUserName" id="edit-userName" placeholder="Edit User Name" value="{{userName}}">
-        <input required type="text" name="editFirstName" id="edit-firstName" placeholder="Edit First Name" value="{{firstName}}">
-        <input required type="text" name="editLastName" id="edit-lastName" placeholder="Edit Last Name" value="{{lastName}}">
+        <input  type="text" name="editFirstName" id="edit-firstName" placeholder="Edit First Name" value="{{firstName}}">
+        <input  type="text" name="editLastName" id="edit-lastName" placeholder="Edit Last Name" value="{{lastName}}">
         <input required type="email" name="editEmail" id="edit-email" placeholder="Edit Email" value="{{email}}">
         <input type="submit" value="Save">
-    </form>
+    </form> -->
+
+    <!-- Personal Profile -->
+    <div class="tab-pane fade in active" id="tab-profile-personal">
+        <div class="row items-push">
+            <div class="col-sm-6 col-sm-offset-3 form-horizontal">
+                <form>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="profile-email">Username</label>
+                            <input required class="form-control input-lg" type="text" id="edit-userName" name="editUserName" placeholder="Enter your username" value="{{userName}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="profile-email">Email Address</label>
+                            <input required class="form-control input-lg" type="email" id="edit-email" name="editEmail" placeholder="Enter your email.." value="{{email}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="profile-firstname">Firstname</label>
+                            <input class="form-control input-lg" type="text" id="edit-firstName" name="editFirstName" placeholder="Enter your firstname.." value="{{firstName}}">
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="profile-lastname">Lastname</label>
+                            <input class="form-control input-lg" type="text" id="edit-lastName" name="editLastName" placeholder="Enter your lastname.." value="{{lastName}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="block-content block-content-full text-center">
+                                <button class="btn btn-sm btn-primary" type="submit"> Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END Personal Profile -->
 </template>

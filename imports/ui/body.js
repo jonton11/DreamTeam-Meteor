@@ -6,5 +6,5 @@ import './body.html';
 import './login.js';
 import './register.js';
 import './navbar.js';
-import './person.js'
+import './personal.js'
 import './editPerson.js'

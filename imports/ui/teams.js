@@ -16,7 +16,7 @@ Template.team.helpers({
     return Meteor.users.find({"profile.teams": this._id})
   },
   userName() {
-    return this.profile.userName
+    return this.username
   },
   isTeamMembers() {
     teams = Meteor.user().profile.teams
@@ -66,12 +66,12 @@ Template.teams.events({
 });
  
 Template.team.events({
-  'click .toggle-checked'() {
-    // Set the checked property to the opposite of its current value
-    Teams.update(this._id, {
-      $set: { checked: ! this.checked },
-    });
-  },
+  // 'click .toggle-checked'() {
+  //   // Set the checked property to the opposite of its current value
+  //   Teams.update(this._id, {
+  //     $set: { checked: ! this.checked },
+  //   });
+  // },
   'click .delete'() {
     const users = Meteor.users.find().fetch()
     
@@ -101,7 +101,7 @@ Template.team.events({
   'submit .searchUser': function(event, template) {
     event.preventDefault();
     const searchUser = event.target.searchUser.value
-    const resultUser = Meteor.users.find({"profile.userName": searchUser}).fetch()
+    const resultUser = Meteor.users.find({username: searchUser}).fetch()
     
     if(resultUser.length>0){
       const joinedTeams = resultUser[0].profile.teams

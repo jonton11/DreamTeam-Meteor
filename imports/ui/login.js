@@ -11,7 +11,7 @@ Template.login.events({
         if(error){
             alert(`${error.reason}`)
         }else{
-            Router.go('person')  
+            Router.go('personal')  
         }
       })
     },
