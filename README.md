@@ -34,7 +34,7 @@ Here’s an example of a user for users collection
 			 "loginTokens" : [ ] 
  	  } }, 
 	"username" : "js", 
-	"emails" : [ { "address" : "js@hot.com", "verified" : false } ],
+	"emails" : [ { "address" : "js@gmail.com", "verified" : false } ],
 	"profile" : { 
 		"firstName" : "John", 
 		"lastName" : "Snow", 
