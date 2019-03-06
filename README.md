@@ -15,7 +15,7 @@ DreamTeam application helps users to build up their dream teams.
 1. a user creates the user account and will be redirected to the Personal page which users can edit or update their profile. Moreover, all teams that the user has joined will be displayed on the page.
 2. On the Teams page, users can view all teams, create new teams, search for new members and add the new member to their team. Furthermore, users can view team members for the teams they have joined.
 
-##Data Structure
+## Data Structure
 
 users and teams are 2 main data collections for this application
 Meteor comes with a default MongoDB collection for user data.
@@ -49,6 +49,7 @@ Here’s an example of a team for teams collection
 	"members" : [ "KxMXhZdSv9KGrZ97u", "yGRii3brTts9Dt6Q5" ]
  }
 
+## More information for DreamTeam application
 
 This application was built based on Meteor Todo application https://www.meteor.com/tutorials/blaze/creating-an-app. From the tutorial, it shows how to set up the user account by using "account-ui" and "account-password" but I would like to use my custom template for login and register pages so, I decided to use only "account-password" to manage user collection then follow this document https://docs.meteor.com/api/passwords.html#Accounts-createUser for creating a user account. I also have a custom button for "signup by GitHub" and follow this document https://docs.meteor.com/api/accounts.html#Meteor-loginWith%3CExternalService%3E for login with GitHub service.
 
