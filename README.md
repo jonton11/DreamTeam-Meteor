@@ -1,6 +1,7 @@
 # DreamTeam
 
 DreamTeam application helps users to build up their dream teams.
+Check it out on Heroku: https://dreamteamvan.herokuapp.com/.
 
 ## Technologies Used
 
@@ -12,7 +13,7 @@ DreamTeam application helps users to build up their dream teams.
 
 ## To use the DreamTeam application
 
-1. a user creates the user account and will be redirected to the Personal page which users can edit or update their profile. Moreover, all teams that the user has joined will be displayed on the page.
+1. a user creates the user account or signups with Github. After logging in or registering, the user will be redirected to the Personal page which user can edit or update the profile. Moreover, all teams that the user has joined will be displayed on the page.
 2. On the Teams page, users can view all teams, create new teams, search for new members and add the new member to their team. Furthermore, users can view team members for the teams they have joined.
 
 ## Data Structure
