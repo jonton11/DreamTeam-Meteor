@@ -21,6 +21,7 @@ users and teams are 2 main data collections for this application
 Meteor comes with a default MongoDB collection for user data.
 
 Here’s an example of a user for users collection
+
 { 
 	"_id" : "KxMXhZdSv9KGrZ97u",
 	 "createdAt" : ISODate("2019-03-05T21:20:29.998Z"), 
@@ -31,8 +32,8 @@ Here’s an example of a user for users collection
 		 "resume" : {
 			 "loginTokens" : [ ] 
  	  } }, 
-	"username" : "2", 
-	"emails" : [ { "address" : "2@hot.com", "verified" : false } ],
+	"username" : "js", 
+	"emails" : [ { "address" : "js@hot.com", "verified" : false } ],
 	"profile" : { 
 		"firstName" : "John", 
 		"lastName" : "Snow", 
@@ -41,6 +42,7 @@ Here’s an example of a user for users collection
  }
 
 Here’s an example of a team for teams collection
+
 { 
 	"_id" : "ss8F5YQf8TYwPayn6", 
 	"name" : "burnaby", 
