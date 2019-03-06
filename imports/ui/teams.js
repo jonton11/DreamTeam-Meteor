@@ -45,7 +45,7 @@ Template.teams.events({
       members: [Meteor.userId()]
     }, function(err){
       if(err){
-        console.log("error create team: ", err)
+        alert("error create team: ", err)
       }
     });
 
@@ -66,37 +66,34 @@ Template.teams.events({
 });
  
 Template.team.events({
-  // 'click .toggle-checked'() {
-  //   // Set the checked property to the opposite of its current value
-  //   Teams.update(this._id, {
-  //     $set: { checked: ! this.checked },
-  //   });
-  // },
   'click .delete'() {
-    const users = Meteor.users.find().fetch()
-    
-    // remove team from user object
-    users.forEach((user) => {
-      const teams = user.profile.teams
-      if(teams.includes(this._id)){
-        const newTeams = [...teams]
-        newTeams.splice(teams.indexOf(this._id), 1)
-
-        const profile = user.profile
-        const data = {
-          userID: user._id,
-          profile,
-          newTeams
+    const cf = confirm(`Please confirm to remove Team: "${this.name}"`)
+    if(cf){
+      // remove team from user object
+      const users = Meteor.users.find().fetch()
+      users.forEach((user) => {
+        const teams = user.profile.teams
+        if(teams.includes(this._id)){
+          const newTeams = [...teams]
+          newTeams.splice(teams.indexOf(this._id), 1)
+  
+          const profile = user.profile
+          const data = {
+            userID: user._id,
+            profile,
+            newTeams
+          }
+  
+          // calling deleteTeamFromUser function from server
+          Meteor.call('deleteTeamFromUser', data, function(error){
+            if (error) console.log("deleteTeamFromUser error " + error.reason);
+          });
         }
+      })
+      // delete team
+      Teams.remove(this._id);
+    }
 
-        // calling deleteTeamFromUser function from server
-        Meteor.call('deleteTeamFromUser', data, function(error){
-          if (error) console.log("got an error " + error.reason);
-        });
-      }
-    })
-    // delete team
-    Teams.remove(this._id);
   },
   'submit .searchUser': function(event, template) {
     event.preventDefault();
@@ -125,7 +122,7 @@ Template.team.events({
 
           // calling addTeamToUser function from the server
           Meteor.call('addTeamToUser', data, function(error){
-            if (error) console.log("got an error " + error.reason);
+            if (error) console.log("addTeamToUser error" + error.reason);
           });
 
         }

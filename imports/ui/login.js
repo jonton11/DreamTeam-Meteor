@@ -15,5 +15,34 @@ Template.login.events({
         }
       })
     },
+    'click #loginGithub': function(event, template) {
+        event.preventDefault()
+
+        // log in with Github function
+        Meteor.loginWithGithub({
+          requestPermissions: ['user', 'public_repo']
+        }, function(err){
+          if (err) {
+            alert(`log in Github error: ${err.reason}`)
+          }else {
+            const email = Meteor.user().services.github.email
+            const newUserName = Meteor.user().services.github.username
+            
+            // update username
+            const currentUserName = Meteor.user().username
+            if(newUserName !== currentUserName){
+                Meteor.call('setUserName', newUserName, function(error){
+                    if (error) alert("update username error " + error.reason);
+                });
+            }
+
+            // update email address
+            Meteor.call('addEmailGithub', email, function(error){
+                if (error) alert("update email error " + error.reason);
+            });
+            Router.go('personal') 
+          }
+        })
+      }
 
   })

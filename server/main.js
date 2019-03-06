@@ -3,16 +3,36 @@ import '../imports/api/teams.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
+ 
+  // Github configuration
+  Accounts.loginServiceConfiguration.remove({
+    service: "github"
+  })
+  
+  Accounts.loginServiceConfiguration.insert({
+    service: "github",
+    clientId: Meteor.settings.clientIDGitHub,
+    secret: Meteor.settings.secretGitHub
+  })
 });
 
 Meteor.methods({
+  addEmailGithub: function(address) {
+    // Accounts.addEmail(Meteor.userId(), address);
+    Meteor.users.update({_id: Meteor.userId()}, {$set: { 
+      emails: [{address: address, verified: false}]
+    }});
+  },
   addNewEmail: function(address)
   {
     // add new email
     Accounts.addEmail(Meteor.userId(), address);
-    // remove previous email
-    const currentEmail = Meteor.user().emails[0].address
-    Accounts.removeEmail(Meteor.userId(), currentEmail)
+
+    if(Meteor.user().emails && Meteor.user().emails.length > 0){
+      // remove previous email
+      const currentEmail = Meteor.user().emails[0].address
+      Accounts.removeEmail(Meteor.userId(), currentEmail)
+    }
   },
   setUserName: function(newUsername){
     // change username

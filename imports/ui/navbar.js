@@ -14,10 +14,10 @@ Template.navbar.events({
       event.preventDefault()
       Meteor.logout(function(err){
         if (err){
-          // show err message
-          console.log("err logout: ", err)
+          // show error message
+          alert("logout error: ", err.reason)
         } else {
-          // show alerts says logged out
+          // redirect to homepage after logging out
           Router.go("/")
         }
       })
