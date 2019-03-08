@@ -36,32 +36,40 @@ Template.teams.events({
     const target = event.target;
     const name = target.name.value;
 
- 
-    // Insert a team into the collection
-    let newTeamID = Teams.insert({
-      name,
-      createdAt: new Date(), // current time
-      createdBy: Meteor.userId(),
-      members: [Meteor.userId()]
-    }, function(err){
-      if(err){
-        alert("error create team: ", err)
-      }
-    });
+    existingTeams = Teams.find().fetch()
+    const isExistingTeam = existingTeams.find(team => team.name === name)
 
-    if(newTeamID){
-      // add new team to user's info
-      const profile = Meteor.user().profile
-      Meteor.users.update({_id: Meteor.userId()}, {$set: { 
-        profile: {
-            ...profile,
-            teams: profile.teams.concat(newTeamID)
+    // Check if the team name is already registered
+    if(!isExistingTeam){
+      // Insert a team into the collection
+      let newTeamID = Teams.insert({
+        name,
+        createdAt: new Date(), // current time
+        createdBy: Meteor.userId(),
+        members: [Meteor.userId()]
+      }, function(err){
+        if(err){
+          alert("error create team: ", err)
         }
-      }});
+      });
+  
+      if(newTeamID){
+        // add new team to user's info
+        const profile = Meteor.user().profile
+        Meteor.users.update({_id: Meteor.userId()}, {$set: { 
+          profile: {
+              ...profile,
+              teams: profile.teams.concat(newTeamID)
+          }
+        }});
+      }
+   
+      // Clear form
+      target.name.value = '';
+    } else {
+      alert(`The team: "${name}" is already registered please create another one`)
     }
- 
-    // Clear form
-    target.name.value = '';
+
   },
 });
  
